@@ -11,8 +11,9 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label fx:id="welcomeText" />
-    <Button onAction="#onHelloButtonClick" text="Hello!" />
+    <Label fx:id="cityNameLabel" />
+   <Label />
+    <Button onAction="#onStartButtonClick" text="START!" />
    <StackPane prefHeight="150.0" prefWidth="200.0">
       <children>
          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
