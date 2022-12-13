@@ -12,7 +12,7 @@
     </padding>
 
     <Label fx:id="cityNameLabel" />
-   <Label />
+   <Label fx:id="pointsLabel" prefHeight="18.0" prefWidth="0.0" />
     <Button onAction="#onStartButtonClick" text="START!" />
    <StackPane prefHeight="150.0" prefWidth="200.0">
       <children>
