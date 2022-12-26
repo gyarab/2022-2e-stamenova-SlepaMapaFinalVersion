@@ -35,6 +35,7 @@ public class MenuController {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            helloController.runGame();
     }
     private void readQuestions(String path) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(path));

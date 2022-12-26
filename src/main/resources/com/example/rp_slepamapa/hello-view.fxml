@@ -12,8 +12,9 @@
     </padding>
 
     <Label fx:id="cityNameLabel" />
-   <Label fx:id="pointsLabel" prefHeight="18.0" prefWidth="0.0" />
-    <Button onAction="#onStartButtonClick" text="START!" />
+   <Label fx:id="pointsLabel" />
+    <Button fx:id="nextButton" onAction="#onNextButtonClick" text="Next question" />
+   <Label fx:id="timeCounterLabel" />
    <StackPane prefHeight="150.0" prefWidth="200.0">
       <children>
          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
