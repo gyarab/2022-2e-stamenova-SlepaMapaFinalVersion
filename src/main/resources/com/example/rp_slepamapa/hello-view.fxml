@@ -13,15 +13,14 @@
 
     <Label fx:id="cityNameLabel" />
    <Label fx:id="pointsLabel" />
+   <Label fx:id="currentStatusLabel" />
     <Button fx:id="nextButton" onAction="#onNextButtonClick" text="Next question" />
    <Label fx:id="timeCounterLabel" />
-   <StackPane prefHeight="150.0" prefWidth="200.0">
+   <StackPane fx:id="stackPane">
       <children>
-         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-          <image>
-              <Image url="@SlepaMapa.jpg" />
-          </image></ImageView>
-         <Canvas fx:id="canvas" height="150.0" onMouseClicked="#onClick" width="200.0" />
+         <ImageView fx:id="imageView" pickOnBounds="true" preserveRatio="true">
+          </ImageView>
+         <Canvas fx:id="canvas" onMouseClicked="#onClick" />
       </children>
    </StackPane>
 </VBox>

@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rp_slepamapa.MenuController">
    <children>
-      <Button layoutX="137.0" layoutY="109.0" mnemonicParsing="false" onAction="#runCzMap" text="Czech republic" />
+      <Button layoutX="53.0" layoutY="109.0" mnemonicParsing="false" onAction="#runCzMap" text="Czech republic" />
+      <Button layoutX="204.0" layoutY="109.0" mnemonicParsing="false" onAction="#runWorldMap" text="World" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package com.example.rp_slepamapa;
 
+import com.example.rp_slepamapa.model.MapData;
 import com.example.rp_slepamapa.model.Question;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -25,12 +27,29 @@ public class MenuController {
     private Scene scene;
     private Parent root;
     private static List<Question> questions = new LinkedList<>();
+    private MapData mapDataCz = new MapData("src/main/resources/com/example/rp_slepamapa/CZ.txt", "SlepaMapaCr.jpg", 294,511);
+    private MapData mapDataWorld = new MapData("src/main/resources/com/example/rp_slepamapa/CZ.txt", "SlepaMapaWorld.jpg", 350,600);
+
     public void runCzMap(ActionEvent event) throws IOException {
-        readQuestions("src/main/resources/com/example/rp_slepamapa/CeskaRepublika.txt");
+        runMap(mapDataCz, event);
+    }
+    public void runWorldMap(ActionEvent event) throws IOException {
+        runMap(mapDataWorld, event);
+    }
+    private void runMap(MapData mapData, ActionEvent event) throws IOException {
+        readQuestions(mapData.getPathToQuestions());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
             root = loader.load();
             HelloController helloController = loader.getController();
             helloController.setQuestions(questions);
+            helloController.imageView.setFitHeight(mapData.getHeight());
+            helloController.imageView.setFitWidth(mapData.getWidth());
+            helloController.canvas.setHeight(mapData.getHeight());
+            helloController.canvas.setWidth(mapData.getWidth());
+            helloController.stackPane.setPrefHeight(mapData.getHeight());
+            helloController.stackPane.setPrefWidth(mapData.getWidth());
+            Image image = new Image(String.valueOf(getClass().getResource(mapData.getPathToMapImage())));
+            helloController.imageView.setImage(image);
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
