@@ -27,8 +27,8 @@ public class MenuController {
     private Scene scene;
     private Parent root;
     private static List<Question> questions = new LinkedList<>();
-    private MapData mapDataCz = new MapData("src/main/resources/com/example/rp_slepamapa/CZ.txt", "SlepaMapaCr.jpg", 294,511);
-    private MapData mapDataWorld = new MapData("src/main/resources/com/example/rp_slepamapa/CZ.txt", "SlepaMapaWorld.jpg", 350,600);
+    private MapData mapDataCz = new MapData("src/main/resources/com/example/rp_slepamapa/CZ.txt", "SlepaMapaCr.jpg", 294,511, x -> (x - 12.09138889)/6.7675 * 511,  y-> (51.05583333 - y)/2.503333333 * 294);
+    private MapData mapDataWorld = new MapData("src/main/resources/com/example/rp_slepamapa/World.txt", "SlepaMapaWorld3.jpg", 483,960, x -> 480 + (x/180*480), y -> 242 -(y/90*242));
 
     public void runCzMap(ActionEvent event) throws IOException {
         runMap(mapDataCz, event);
@@ -42,6 +42,8 @@ public class MenuController {
             root = loader.load();
             HelloController helloController = loader.getController();
             helloController.setQuestions(questions);
+            helloController.setConvertWidth(mapData.getConvertWidth());
+            helloController.setConvertLength(mapData.getConvertLength());
             helloController.imageView.setFitHeight(mapData.getHeight());
             helloController.imageView.setFitWidth(mapData.getWidth());
             helloController.canvas.setHeight(mapData.getHeight());

@@ -5,7 +5,12 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rp_slepamapa.MenuController">
    <children>
-      <Button layoutX="53.0" layoutY="109.0" mnemonicParsing="false" onAction="#runCzMap" text="Czech republic" />
-      <Button layoutX="204.0" layoutY="109.0" mnemonicParsing="false" onAction="#runWorldMap" text="World" />
+      <VBox layoutX="133.0" layoutY="44.0" prefHeight="207.0" prefWidth="118.0" spacing="10.0">
+         <children>
+            <Label text="Find the city" />
+            <Button mnemonicParsing="false" onAction="#runWorldMap" text="World" />
+            <Button mnemonicParsing="false" onAction="#runCzMap" text="Czech republic" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

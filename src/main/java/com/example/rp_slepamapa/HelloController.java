@@ -3,6 +3,9 @@ package com.example.rp_slepamapa;
 import com.example.rp_slepamapa.model.Question;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -11,8 +14,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.function.Function;
 
 public class HelloController {
     private List<Question> questions;
@@ -21,6 +27,9 @@ public class HelloController {
     private int points;
     private Thread timeCounterThread;
     private boolean isQuestionActive = false;
+    private Function<Double, Double> convertWidth;
+    private Function<Double, Double> convertLength;
+    private int maxPoints;
     @FXML
     private Label cityNameLabel;
     @FXML
@@ -37,12 +46,28 @@ public class HelloController {
     public StackPane stackPane;
     @FXML
     private Label currentStatusLabel;
-
     @FXML
-    protected void onNextButtonClick() {
+    protected void onNextButtonClick() throws IOException {
+        if(questions.size() == 0) {
+           goToMainMenu();
+        }
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         askQuestion();
+    }
+    @FXML
+    protected void onMenuButtonClick() throws IOException {
+        goToMainMenu();
+    }
+    private void goToMainMenu() throws IOException {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("menu-view.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) canvas.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setHeight(220);
+            stage.setWidth(340);
+            stage.show();
     }
 
     private void askQuestion() {
@@ -87,18 +112,41 @@ public class HelloController {
         gc.strokeOval(x - 10, y - 10, 20, 20);
         gc.setStroke(Color.ORANGE);
         gc.strokeOval(x - 20, y - 20, 40, 40);
+        if(questions.size() == 0) {
+            nextButton.setText("Back to main menu");
+            currentStatusLabel.setText("Game over! " +
+                    "You earned " + points + " points from maximum of " + maxPoints);
+
+        }
         isQuestionActive = false;
         nextButton.setDisable(false);
     }
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+        this.maxPoints = questions.size()*10;
+    }
+
+    public Function<Double, Double> getConvertWidth() {
+        return convertWidth;
+    }
+
+    public void setConvertWidth(Function<Double, Double> convertWidth) {
+        this.convertWidth = convertWidth;
+    }
+
+    public Function<Double, Double> getConvertLength() {
+        return convertLength;
+    }
+
+    public void setConvertLength(Function<Double, Double> convertLength) {
+        this.convertLength = convertLength;
     }
 
     private void generateQuestion() {
         Question question = questions.remove(0);
-        x = question.getX();
-        y = question.getY();
+        x = convertWidth.apply(question.getX());
+        y = convertLength.apply(question.getY());
         cityNameLabel.setText(question.getCityName());
     }
 
