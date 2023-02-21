@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -29,6 +30,9 @@ public class MenuController {
     private static List<Question> questions = new LinkedList<>();
     private MapData mapDataCz = new MapData("src/main/resources/com/example/rp_slepamapa/CZ.txt", "SlepaMapaCr.jpg", 294,511, x -> (x - 12.09138889)/6.7675 * 511,  y-> (51.05583333 - y)/2.503333333 * 294);
     private MapData mapDataWorld = new MapData("src/main/resources/com/example/rp_slepamapa/World.txt", "SlepaMapaWorld3.jpg", 483,960, x -> 480 + (x/180*480), y -> 242 -(y/90*242));
+    @FXML
+    private TextField NumberTextField;
+
 
     public void runCzMap(ActionEvent event) throws IOException {
         runMap(mapDataCz, event);
@@ -41,7 +45,8 @@ public class MenuController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
             root = loader.load();
             HelloController helloController = loader.getController();
-            helloController.setQuestions(questions);
+            int numberOfQuestions = Integer.parseInt(NumberTextField.getText());
+            helloController.setQuestions(questions, numberOfQuestions);
             helloController.setConvertWidth(mapData.getConvertWidth());
             helloController.setConvertLength(mapData.getConvertLength());
             helloController.imageView.setFitHeight(mapData.getHeight());
@@ -55,6 +60,10 @@ public class MenuController {
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
+            stage.setHeight(800);
+            stage.setWidth(1200);
+            stage.setX(100);
+            stage.setY(50);
             stage.show();
             helloController.runGame();
     }

@@ -7,9 +7,11 @@
    <children>
       <VBox layoutX="133.0" layoutY="44.0" prefHeight="207.0" prefWidth="118.0" spacing="10.0">
          <children>
-            <Label text="Find the city" />
+            <Label text="Choose a map" />
             <Button mnemonicParsing="false" onAction="#runWorldMap" text="World" />
             <Button mnemonicParsing="false" onAction="#runCzMap" text="Czech republic" />
+            <Label text="Number of questions:" />
+            <TextField fx:id="NumberTextField" text="15" />
          </children>
       </VBox>
    </children>

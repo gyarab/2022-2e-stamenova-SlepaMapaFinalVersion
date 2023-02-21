@@ -29,6 +29,7 @@ public class HelloController {
     private boolean isQuestionActive = false;
     private Function<Double, Double> convertWidth;
     private Function<Double, Double> convertLength;
+    private int numberOfQuestions;
     private int maxPoints;
     @FXML
     private Label cityNameLabel;
@@ -48,7 +49,7 @@ public class HelloController {
     private Label currentStatusLabel;
     @FXML
     protected void onNextButtonClick() throws IOException {
-        if(questions.size() == 0) {
+        if(numberOfQuestions == 0) {
            goToMainMenu();
         }
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -66,7 +67,7 @@ public class HelloController {
             Stage stage = (Stage) canvas.getScene().getWindow();
             stage.setScene(scene);
             stage.setHeight(220);
-            stage.setWidth(340);
+            stage.setWidth(370);
             stage.show();
     }
 
@@ -77,6 +78,7 @@ public class HelloController {
         timeCounterThread = getTimeCounterThread();
         timeCounterThread.start();
         currentStatusLabel.setText("Select a place!");
+        numberOfQuestions --;
     }
 
     public void onClick(MouseEvent mouseEvent) {
@@ -112,7 +114,7 @@ public class HelloController {
         gc.strokeOval(x - 10, y - 10, 20, 20);
         gc.setStroke(Color.ORANGE);
         gc.strokeOval(x - 20, y - 20, 40, 40);
-        if(questions.size() == 0) {
+        if(numberOfQuestions == 0) {
             nextButton.setText("Back to main menu");
             currentStatusLabel.setText("Game over! " +
                     "You earned " + points + " points from maximum of " + maxPoints);
@@ -122,21 +124,14 @@ public class HelloController {
         nextButton.setDisable(false);
     }
 
-    public void setQuestions(List<Question> questions) {
+    public void setQuestions(List<Question> questions, int numberOfQuestions) {
         this.questions = questions;
-        this.maxPoints = questions.size()*10;
-    }
-
-    public Function<Double, Double> getConvertWidth() {
-        return convertWidth;
+        this.numberOfQuestions = numberOfQuestions > questions.size() ? numberOfQuestions : questions.size();
+        this.maxPoints = this.numberOfQuestions*10;
     }
 
     public void setConvertWidth(Function<Double, Double> convertWidth) {
         this.convertWidth = convertWidth;
-    }
-
-    public Function<Double, Double> getConvertLength() {
-        return convertLength;
     }
 
     public void setConvertLength(Function<Double, Double> convertLength) {
