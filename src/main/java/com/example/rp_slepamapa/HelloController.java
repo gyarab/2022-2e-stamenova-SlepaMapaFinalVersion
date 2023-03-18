@@ -126,7 +126,7 @@ public class HelloController {
 
     public void setQuestions(List<Question> questions, int numberOfQuestions) {
         this.questions = questions;
-        this.numberOfQuestions = numberOfQuestions > questions.size() ? numberOfQuestions : questions.size();
+        this.numberOfQuestions = numberOfQuestions < questions.size() ? numberOfQuestions : questions.size();
         this.maxPoints = this.numberOfQuestions*10;
     }
 
