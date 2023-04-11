@@ -88,6 +88,7 @@ public class HelloController {
             gc.setFill(Color.BLACK);
             gc.fillOval(mouseEvent.getX() - 5, mouseEvent.getY() - 5, 10, 10);
 
+            //Vypočítání vzdálenosti a přirazení bodů
             double distance = Math.sqrt(Math.pow(mouseEvent.getX() - x, 2) + Math.pow(mouseEvent.getY() - y, 2));
             int accuracy = 0;
             if (distance < 10) {
@@ -105,7 +106,7 @@ public class HelloController {
             showResult();
         }
     }
-
+    //Označení správného města
     private void showResult() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.GREEN);
@@ -124,6 +125,7 @@ public class HelloController {
         nextButton.setDisable(false);
     }
 
+    //Určení počtu otázek a maximálního počtu bodů
     public void setQuestions(List<Question> questions, int numberOfQuestions) {
         this.questions = questions;
         this.numberOfQuestions = numberOfQuestions < questions.size() ? numberOfQuestions : questions.size();
@@ -151,7 +153,7 @@ public class HelloController {
         askQuestion();
 
     }
-
+    //Časovač - 10 sekund na každou otázku
     private Thread getTimeCounterThread() {
         timeCounterLabel.setText("You have " + 10 + " seconds left");
         return new Thread(() -> {
