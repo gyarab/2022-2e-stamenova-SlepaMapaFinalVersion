@@ -2,16 +2,32 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rp_slepamapa.MenuController">
    <children>
-      <VBox layoutX="133.0" layoutY="44.0" prefHeight="207.0" prefWidth="118.0" spacing="10.0">
+      <VBox layoutX="133.0" layoutY="44.0" prefHeight="204.0" prefWidth="180.0" spacing="10.0">
          <children>
-            <Label text="Choose a map" />
-            <Button mnemonicParsing="false" onAction="#runWorldMap" text="World" />
-            <Button mnemonicParsing="false" onAction="#runCzMap" text="Czech republic" />
-            <Label text="Number of questions:" />
-            <TextField fx:id="NumberTextField" text="15" />
+            <Label text="Choose a map:">
+               <font>
+                  <Font name="Gabriola" size="20.0" />
+               </font></Label>
+            <Button mnemonicParsing="false" onAction="#runWorldMap" text="World" textFill="#279127" textOverrun="CLIP">
+               <font>
+                  <Font name="Felix Titling" size="14.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#runCzMap" prefHeight="28.0" prefWidth="147.0" text="Czech republic" textAlignment="CENTER" textFill="#b92d2d">
+               <font>
+                  <Font name="Felix Titling" size="14.0" />
+               </font></Button>
+            <Label text="Number of questions:" textAlignment="CENTER">
+               <font>
+                  <Font name="Gabriola" size="16.0" />
+               </font></Label>
+            <TextField fx:id="NumberTextField" text="15">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font></TextField>
          </children>
       </VBox>
    </children>

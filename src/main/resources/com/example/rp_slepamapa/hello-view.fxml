@@ -5,17 +5,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rp_slepamapa.HelloController">
+<VBox alignment="CENTER" prefHeight="375.0" prefWidth="225.0" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rp_slepamapa.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <Button fx:id="MenuButton" mnemonicParsing="false" onAction="#onMenuButtonClick" text="Back to main menu" />
+   <Button fx:id="MenuButton" mnemonicParsing="false" onAction="#onMenuButtonClick" text="Back to main menu" textFill="#5333c7">
+      <font>
+         <Font name="Gabriola" size="24.0" />
+      </font></Button>
 
-    <Label fx:id="cityNameLabel" />
-   <Label fx:id="pointsLabel" />
-   <Label fx:id="currentStatusLabel" />
-    <Button fx:id="nextButton" onAction="#onNextButtonClick" text="Next question" />
+    <Label fx:id="cityNameLabel" textFill="#22b780">
+      <font>
+         <Font name="Gabriola" size="34.0" />
+      </font></Label>
+   <Label fx:id="currentStatusLabel" textFill="#e11717">
+      <font>
+         <Font name="Gabriola" size="22.0" />
+      </font></Label>
+   <Label fx:id="pointsLabel" textFill="#525dd1">
+      <font>
+         <Font name="Gabriola" size="18.0" />
+      </font></Label>
+    <Button fx:id="nextButton" onAction="#onNextButtonClick" text="Next question" textFill="#1b8ad4">
+      <font>
+         <Font name="Gabriola" size="18.0" />
+      </font></Button>
    <Label fx:id="timeCounterLabel" />
    <StackPane fx:id="stackPane">
       <children>

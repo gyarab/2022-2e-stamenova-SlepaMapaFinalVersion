@@ -125,7 +125,7 @@ public class HelloController {
         nextButton.setDisable(false);
     }
 
-    //Určení počtu otázek a maximálního počtu bodů
+    //Určení počtu otázek a maximálního počtu bodů  
     public void setQuestions(List<Question> questions, int numberOfQuestions) {
         this.questions = questions;
         this.numberOfQuestions = numberOfQuestions < questions.size() ? numberOfQuestions : questions.size();

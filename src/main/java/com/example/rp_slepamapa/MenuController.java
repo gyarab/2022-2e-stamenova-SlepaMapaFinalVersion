@@ -60,13 +60,14 @@ public class MenuController {
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
-            stage.setHeight(800);
+            stage.setHeight(870);
             stage.setWidth(1200);
             stage.setX(100);
             stage.setY(50);
             stage.show();
             helloController.runGame();
     }
+    //Načítání a promíchání otázek z textového dokumentu
     private void readQuestions(String path) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(path));
         String line;
