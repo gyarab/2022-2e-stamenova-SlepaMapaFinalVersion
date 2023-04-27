@@ -71,6 +71,7 @@ public class MenuController {
     private void readQuestions(String path) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(path));
         String line;
+        questions = new LinkedList<>();
         while((line = br.readLine()) != null) {
             String[] data = line.split(" ");
             String cityName = data[0];
